@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link, Route} from "react-router-dom"
 import axios from "axios"
 
 export default class Student extends Component {
@@ -17,12 +18,15 @@ export default class Student extends Component {
   }
 
   render() {
+    console.log(this.props)
+    const myClass = this.props.match.params.class
     return (
       <div className="box">
         <h1>Student</h1>
         <h1>{this.state.studentInfo.first_name}{this.state.studentInfo.last_name}</h1>
         <h3>Grade:{this.state.studentInfo.grade}</h3>
         <h3>Email:{this.state.studentInfo.email}</h3>
+        <button onClick={()=>this.props.history.goBack()}>back</button>
       </div>
     )
   }
